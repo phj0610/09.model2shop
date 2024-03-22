@@ -6,7 +6,9 @@
 
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 
-<script type="text/javascript">
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+
 
 function fncAddUser() {
 	// Form 유효성 검증
@@ -107,7 +109,7 @@ function resetData() {
 
 <body bgcolor="#ffffff" text="#000000">
 
-<form name="detailForm"  method="post" >
+<!--  <form name="detailForm"  method="post" >-->
 
 <table width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 	<tr>

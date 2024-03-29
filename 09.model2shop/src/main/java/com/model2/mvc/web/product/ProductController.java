@@ -122,9 +122,10 @@ public class ProductController {
         
         // 쿠키에 열람 기록을 저장
         Cookie historyCookie = new Cookie("history", history);
+        historyCookie.setPath("/");
         response.addCookie(historyCookie);
         // 기본적으로 상품 상세 정보 화면으로 포워드
-       
+      
         if (request.getParameter("menu").equals("manage")) {
             return "forward:/product/updateProductView.jsp";
         } 

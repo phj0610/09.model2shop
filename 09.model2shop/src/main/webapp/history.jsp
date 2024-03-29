@@ -7,6 +7,11 @@
 <head>
 
 <title>열어본 상품 보기</title>
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript">
+	
+	
+	</script>
 
 </head>
 <body>
@@ -18,6 +23,7 @@
 	response.setCharacterEncoding("euc-kr");
 	String history = null;
 	Cookie[] cookies = request.getCookies();
+	
 	if (cookies!=null && cookies.length > 0) {
 		for (int i = 0; i < cookies.length; i++) {
 			Cookie cookie = cookies[i];
@@ -29,6 +35,8 @@
 			String[] h = history.split("/");
 			for (int i = 0; i < h.length; i++) {
 				if (!h[i].equals("null")) {
+						
+					 
 %>
 <a href="/product/getProduct?prodNo=<%=h[i]%>&menu=search"
 	target="rightFrame"><%=h[i]%></a>
@@ -38,7 +46,9 @@
 			}
 		}
 	}
+	
+
 %>
 
 </body>
-</html>
+</html> 

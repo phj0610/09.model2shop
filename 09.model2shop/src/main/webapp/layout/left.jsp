@@ -55,9 +55,13 @@
 		 		$(window.parent.frames["rightFrame"].document.location).attr("href","/product/listProduct?menu=search");
 			}); 
 			
+			$( ".Depth03:contains('최근 본 상품')" ).on("click" , function() {
+				 history();
+			}); 
 			
 		 });
-		 
+		 	  
+
 	</script>
 	
 </head>
@@ -150,7 +154,8 @@
 			</tr>
 			<tr>
 				<td class="Depth03">
-				<a href="javascript:history()">최근 본 상품</a>
+				<!--  <a href="javascript:history()">-->
+				최근 본 상품
 				</td>
 			</tr>
 		</table>

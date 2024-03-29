@@ -28,7 +28,7 @@
             
             // 해당 폼을 제출합니다.
             $("#" + formId).submit();
-            
+         /*    document.cookie = "history=" + prodNo + ";path=/"; */
             // 새로운 URL로 이동합니다.
             self.location = "/product/getProduct?menu=" + menu + "&prodNo=" + prodNo;
         });
@@ -37,9 +37,6 @@
 <!--  <a href="/product/${ menuType eq 'manage' ? 'updateProduct' : 'getProduct'}?prodNo=${ product.prodNo }&menu=${param.menu}"  -->
    
 </script>
-
-
-
 
 </head>
 
@@ -210,7 +207,7 @@
 			 <div style="text-align: center; margin-top: 10px;">
 
 			
-			<jsp:include page="../common/pageNavigator.jsp"/>	
+			<jsp:include page="../common/listpageNavigator.jsp"/>	
 				</div>
        </td>
        

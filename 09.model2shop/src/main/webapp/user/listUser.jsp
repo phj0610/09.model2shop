@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>회원 목록 조회</title>
-
+<!-- //내꺼 -->
 <link rel="stylesheet" href="/css/admin.css" type="text/css">
 <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
@@ -22,16 +22,20 @@
 	 $(function() {
 	 $( "td.ct_btn01:contains('검색')" ).on("click" , function() {
 			//Debug..
-			alert(  $( "td.ct_btn01:contains('검색')" ).html() );
+			//alert(  $( "td.ct_btn01:contains('검색')" ).html() );
 			fncGetUserList(1);
 			
 			
 		});
-	 
+	 $( ".ct_list_pop td:nth-child(3)" ).css("color" , "red");
 		$( ".ct_list_pop td:nth-child(3)" ).on("click" , function() {
 			
 			self.location ="/user/getUser?userId="+$(this).text().trim();
-	});
+			
+			
+		});
+		
+	 });
 	
 </script>
 

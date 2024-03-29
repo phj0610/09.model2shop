@@ -5,31 +5,42 @@
 
 <html>
 <head>
-<title>상품 목록조회</title>
+    <title>상품 목록조회</title>
+    <link rel="stylesheet" href="/css/admin.css" type="text/css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    
+    function fncGetProductList(currentPage) {
+        $("#currentPage").val(currentPage);
+        $("form").attr("method", "POST").attr("action", "/product/listProduct?menu=${param.menu}").submit();
+    }
+    
+    $(function(){
+        $(".ct_list_pop td:nth-child(3)").on("click", function(){
+            var prodNo = $(this).closest("tr").find('input[name="prodNo"]').val();
+            var menu = "${param.menu}";
 
-<link rel="stylesheet" href="/css/admin.css" type="text/css">
-	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+            // 각 상품 행에 해당하는 폼의 ID를 가져옵니다.
+            var formId = $(this).closest("form").attr("id");
 
-<script type="text/javascript">
+            // 해당 폼에 hidden input을 추가합니다.
+            $("#" + formId).append('<input type="hidden" name="prodNo" value="' + prodNo + '">');
+            
+            // 해당 폼을 제출합니다.
+            $("#" + formId).submit();
+            
+            // 새로운 URL로 이동합니다.
+            self.location = "/product/getProduct?menu=" + menu + "&prodNo=" + prodNo;
+        });
+    });
 
-function fncGetProductList(currentPage){
-	//document.getElementById("currentPage").value = currentPage;
-	$("#currentPage").val(currentPage){
-		$("form").attr("method", "POST").self.location="/product/listProduct?menu=${param.menu}").submit();
-	}
-   //document.detailForm.submit();
-}
-
-$(function(){
-$( "td.ct_btn01:contains('검색')" ).on("click" , function() {
-	//Debug..
-	//alert(  $( "td.ct_btn01:contains('검색')" ).html() );
-	fncGetProductList(1);
-});
-
-
-
+<!--  <a href="/product/${ menuType eq 'manage' ? 'updateProduct' : 'getProduct'}?prodNo=${ product.prodNo }&menu=${param.menu}"  -->
+   
 </script>
+
+
+
+
 </head>
 
 <body bgcolor="#ffffff" text="#000000">
@@ -40,7 +51,7 @@ $( "td.ct_btn01:contains('검색')" ).on("click" , function() {
 <form name="detailForm" action="/product/listProduct?menu=${param.menu}" method="post">--%>
 
 
-
+<form name= "detailForm">
 <table width="100%" height="37" border="0" cellpadding="0"   cellspacing="0">
    <tr>
       <td width="15" height="37">
@@ -156,16 +167,19 @@ $( "td.ct_btn01:contains('검색')" ).on("click" , function() {
       <td colspan="11" bgcolor="808285" height="1"></td>
    </tr>
 
-
 <c:set var="i" value="0" />
 				<c:forEach var="product" items="${list}">
 					<c:set var="i" value="${ i+1 }" />
 					<tr class="ct_list_pop">
 						<td align="center">${ i }</td>
-						<td></td>
+							<td></td>
 						<td align="left">
-							<a href="/product/${ menuType eq 'manage' ? 'updateProduct' : 'getProduct'}?prodNo=${ product.prodNo }&menu=${param.menu}">${ product.prodName }</a>
-						</td>						
+					
+						<input type="hidden" name="prodNo" value="${product.prodNo}">
+							<!--  <a href="/product/${ menuType eq 'manage' ? 'updateProduct' : 'getProduct'}?prodNo=${ product.prodNo }&menu=${param.menu}" >
+       						-->	     ${product.prodName}
+       							</td>	
+											
 						<td></td>
 						<td align="left">${product.price }</td>
 						<td></td>
@@ -174,12 +188,12 @@ $( "td.ct_btn01:contains('검색')" ).on("click" , function() {
 			
 						 <td align="left">배송중</td>
 			             
-					</tr>
-					<tr>
-						<td colspan="11" bgcolor="D6D7D6" height="1"></td>
-					</tr>
-				</c:forEach>
-			</table>
+    </tr>
+    <tr>
+        <td colspan="11" bgcolor="D6D7D6" height="1"></td>
+    </tr>
+</c:forEach>
+	</table>
 
 
 <tr>
